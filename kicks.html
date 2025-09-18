@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kicks: Learn Python. Live the Adventure.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+        .hero-text {
+            z-index: 10;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            z-index: 0;
+        }
+        .card {
+            background-color: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        .gradient-text {
+            background-image: linear-gradient(to right, #6EE7B7, #3B82F6, #93C5FD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .animate-up-down {
+            animation: up-down 3s infinite alternate;
+        }
+        @keyframes up-down {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Three.js Scene Container -->
+    <canvas id="hero-canvas" class="fixed inset-0 w-full h-full z-0"></canvas>
+    
+    <!-- Hero Section -->
+    <header class="section relative bg-cover bg-center text-center">
+        <div class="hero-text z-10 p-4 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 animate-up-down">
+                <span class="gradient-text">Kicks: Learn Python. Live the Adventure.</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-300 font-light mb-8">
+                An open-world fantasy RPG where magic equals Python.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105">
+                    Join the Adventure
+                </button>
+                <button class="bg-transparent hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-full border border-gray-400 transition-transform duration-300 transform hover:scale-105">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Kicks Section -->
+    <section id="features" class="section">
+        <div class="p-4 max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">"Why just learn Python... when you can <span class="gradient-text">live it?</span>"</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-2">Explore a Vast Open World</h3>
+                    <p class="text-gray-300">Journey through mystical realms where every discovery teaches you something new about programming.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-2">Quests = Python Concepts</h3>
+                    <p class="text-gray-300">Transform abstract coding lessons into epic adventures that stick in your memory forever.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-2">Magic = Functions</h3>
+                    <p class="text-gray-300">Cast spells by writing code, making programming feel like wielding actual magical powers.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-2">Dungeons = OOP Mastery</h3>
+                    <p class="text-gray-300">Conquer challenging dungeons that teach object-oriented programming through thrilling gameplay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Game Structure Section -->
+    <section id="structure" class="section bg-gray-800">
+        <div class="p-4 max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Game Structure: Your <span class="gradient-text">Learning Adventure</span> Awaits</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="card">
+                    <h3 class="text-3xl font-bold mb-2">Main Quests</h3>
+                    <p class="text-gray-300">Embark on epic storylines that guide you through core Python topics, creating a cohesive learning journey.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-3xl font-bold mb-2">Side Quests</h3>
+                    <p class="text-gray-300">Discover hidden coding puzzles and rich lore scattered throughout the world to deepen your understanding.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-3xl font-bold mb-2">Random Events</h3>
+                    <p class="text-gray-300">Encounter spontaneous moments that keep the world feeling alive and unpredictable, previewing future challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Endgame Projects Section -->
+    <section id="projects" class="section">
+        <div class="p-4 max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Endgame Projects: <span class="gradient-text">Capstone Quests</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-2">Build a House</h3>
+                    <p class="text-gray-300">Master the art of web creation by combining Python with HTML/CSS basics.</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-2">Create Bots & Pets</h3>
+                    <p class="text-gray-300">Bring digital companions to life through Python automation.</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-2">Use the Market</h3>
+                    <p class="text-gray-300">Navigate the mystical data marketplace by mastering SQL and database interactions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visuals Section -->
+    <section id="visuals" class="section bg-gray-800">
+        <div class="p-4 max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-12">Immersive <span class="gradient-text">Visuals</span></h2>
+            
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6">Medieval Fantasy</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <img src="sources\20250918_1220_Enchanted Cliffside Castle_simple_compose_01k5dsar1efmnbg72y1zv9d4cr.png" alt="A medieval castle on a misty hill" class="rounded-xl shadow-lg w-full h-full object-cover">
+                    <img src="sources\20250918_1224_Sunlit Ancient Relic_simple_compose_01k5dsjah1eygrwp3aavr81gxm.png" alt="Ancient ruins shrouded in fog" class="rounded-xl shadow-lg w-full h-full object-cover">
+                    <img src="sources\20250918_1231_Dragon's Treasure Cave_simple_compose_01k5dsxx0afz6aggvgmxnpkf4f.png" alt="A dragon's lair with glowing crystals" class="rounded-xl shadow-lg w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6">Sci-Fi Concepts</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <img src="sources/Gemini_Generated_Image_1ea1nj1ea1nj1ea1.png" alt="A futuristic cyberpunk cityscape" class="rounded-xl shadow-lg w-full h-full object-cover">
+                    <img src="sources\Gemini_Generated_Image_lt0tb5lt0tb5lt0t.png" alt="A holographic map of a star system" class="rounded-xl shadow-lg w-full h-full object-cover">
+                    <img src="sources\Gemini_Generated_Image_pothahpothahpoth.png" alt="A small robot companion" class="rounded-xl shadow-lg w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-2xl font-bold mb-4">A Glimpse of the Adventure</h3>
+                <div class="relative w-full rounded-xl overflow-hidden" style="padding-bottom: 56.25%;">
+                    <video class="absolute top-0 left-0 w-full h-full object-cover" controls autoplay muted loop>
+                        <!-- Fallback video source that is generally reliable -->
+                        <source src="sources\Python_Spell_Visualized_in_Game.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p class="text-gray-400 mt-4">A thrilling trailer showing gameplay and magical spells.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Kicks Transforms Learning Section -->
+    <section id="why" class="section">
+        <div class="p-4 max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">Why Kicks <span class="gradient-text">Transforms Learning</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-2">Gamified Engagement</h3>
+                    <p class="text-gray-300">Transform learning into an addictive adventure where every lesson feels like a reward, not a chore.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-2">Story-Driven Memory</h3>
+                    <p class="text-gray-300">Embed programming concepts within epic narratives that make complex topics unforgettable.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold mb-2">Infinite Replayability</h3>
+                    <p class="text-gray-300">Discover new paths, hidden secrets, and advanced challenges that keep you coming back to deepen your skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-8">
+        <p class="text-gray-500 text-sm">Made with Grow2One</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            // Three.js setup for the hero section
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+
+            camera.position.z = 5;
+
+            // Simple ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            // Directional light for shadows and highlights
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(0, 5, 5);
+            scene.add(directionalLight);
+
+            // Create a custom 3D model (e.g., a simple low-poly magic rune)
+            const geometry = new THREE.DodecahedronGeometry(1, 0);
+            const material = new THREE.MeshStandardMaterial({
+                color: 0x93C5FD,
+                emissive: 0x3B82F6,
+                emissiveIntensity: 0.5,
+                metalness: 0.5,
+                roughness: 0.1
+            });
+            const rune = new THREE.Mesh(geometry, material);
+            scene.add(rune);
+
+            // Animation loop
+            const animate = function () {
+                requestAnimationFrame(animate);
+
+                rune.rotation.x += 0.005;
+                rune.rotation.y += 0.005;
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        };
+    </script>
+</body>
+</html>
